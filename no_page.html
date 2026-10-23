@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=7">
+    <style>
+        .curtain {
+            position: fixed; inset: 0; z-index: 10;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 10px; text-align: center; padding: 20px;
+            color: #f3d9e1; background: #1b1016;
+            opacity: 0; pointer-events: none; transition: opacity 1.6s ease;
+        }
+        .curtain.on { opacity: 1; pointer-events: auto; }
+        .curtain .moon { font-size: 3rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="big-emoji sad">💔</div>
+        <h1>Хорошо, я понял</h1>
+        <p class="sub">Спасибо, что ответила честно. Всё в порядке 🙂<br>Сайт сейчас закроется.</p>
+    </div>
+    <div class="curtain" id="curtain">
+        <div class="moon">🌙</div>
+        <div>Можно закрыть эту вкладку.</div>
+    </div>
+    <script>
+        setTimeout(function () {
+            document.getElementById("curtain").classList.add("on");
+            try { window.close(); } catch (e) {}  // сработает не во всех браузерах
+        }, 5000);
+    </script>
+</body>
+</html>

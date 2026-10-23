@@ -1,0 +1,140 @@
+/* Стили страницы после «Да» */
+.yes-page h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    margin-bottom: 12px;
+}
+
+.yes-page .sub {
+    font-size: 1.15rem;
+    margin-bottom: 0;
+}
+
+.yes-page .gif_container img {
+    margin-bottom: 26px;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ---------- Форма планирования свидания ---------- */
+[hidden] { display: none !important; }
+
+.yes-page .card { max-width: 500px; }
+.yes-page .gif_container img { max-width: 170px; margin-bottom: 16px; }
+.yes-page h1, .yes-page .sub { text-align: center; }
+.yes-page .sub { margin-bottom: 20px; }
+
+.field { margin-bottom: 18px; text-align: left; }
+.field > label, .field-title { display: block; margin-bottom: 8px; font-weight: 800; }
+
+.row { display: flex; gap: 10px; }
+.row > * { flex: 1; min-width: 0; }
+
+input[type="date"], input[type="time"], input[type="text"], textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font: inherit;
+    font-size: 16px; /* чтобы iPhone не приближал страницу при вводе */
+    color: var(--ink);
+    background: #fff;
+    border: 2px solid #ffc2d1;
+    border-radius: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 4px rgba(255, 77, 121, 0.15);
+}
+
+textarea { min-height: 72px; resize: vertical; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+
+.chip span {
+    display: inline-block;
+    padding: 9px 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #fff;
+    border: 2px solid #ffc2d1;
+    border-radius: 999px;
+    transition: transform 0.15s, background 0.2s, color 0.2s;
+}
+
+.chip input:checked + span {
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b94, #ff3d6e);
+    border-color: transparent;
+    transform: scale(1.04);
+}
+
+.chip input:focus-visible + span { box-shadow: 0 0 0 4px rgba(255, 77, 121, 0.3); }
+
+
+.submit-button {
+    width: 100%;
+    margin-top: 4px;
+    padding: 14px;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b94, #ff3d6e);
+    box-shadow: 0 8px 20px rgba(255, 61, 110, 0.4);
+}
+
+.submit-button:disabled { opacity: 0.6; cursor: wait; }
+
+.error { min-height: 1.2em; margin: 10px 0 0; text-align: center; font-weight: 700; color: #c0143c; }
+
+.done { text-align: center; }
+
+.summary {
+    margin: 16px 0 0;
+    padding: 14px 16px;
+    line-height: 1.7;
+    text-align: left;
+    background: #fff;
+    border-radius: 18px;
+}
+
+/* ---------- Вкладка с вариантами (кухня, жанр и т.д.) ---------- */
+.subpanel {
+    margin-top: 12px;
+    padding: 14px;
+    background: rgba(255, 228, 236, 0.7);
+    border-radius: 18px;
+    animation: popIn 0.35s ease both;
+}
+
+.subpanel .chips { margin-bottom: 4px; }
+.subpanel .chip span { padding: 7px 12px; font-size: 0.95rem; }
+.subpanel input[type="text"] { margin-top: 10px; }
+
+/* ---------- Кнопки календаря ---------- */
+.cal-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+
+.cal-btn {
+    display: block;
+    padding: 13px 16px;
+    font: inherit;
+    font-weight: 800;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--pink-dark);
+    background: #fff;
+    border: 2px solid #ffc2d1;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.cal-btn:hover { border-color: var(--pink); }

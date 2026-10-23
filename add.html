@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить в календарь</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="yes_style.css?v=7">
+</head>
+<body class="yes-page">
+    <div class="card">
+        <div class="big-emoji">📅</div>
+        <h1>Свидание ❤️</h1>
+        <div class="summary" id="add-summary"></div>
+        <div class="cal-buttons" id="add-buttons" hidden>
+            <a class="cal-btn" id="add-google" target="_blank" rel="noopener">📅 Google Календарь</a>
+            <button class="cal-btn" id="add-ics" type="button">⬇️ Apple / Outlook (.ics)</button>
+        </div>
+    </div>
+    <script src="calendar.js?v=7"></script>
+    <script>
+        const q = new URLSearchParams(location.search);
+        const box = document.getElementById("add-summary");
+        if (!q.get("d") || !q.get("h")) {
+            box.textContent = "Нет данных о свидании. Открой ссылку из письма.";
+        } else {
+            const data = { date: q.get("d"), time: q.get("h"), place: q.get("p") || "", activity: q.get("a") || "", note: q.get("n") || "" };
+            const pretty = new Date(data.date + "T00:00:00").toLocaleDateString("ru-RU", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+            [["📅 Когда", pretty + ", " + data.time], ["📍 Где встретимся", data.place], ["✨ Куда пойдём", data.activity]]
+                .forEach(([l, v]) => {
+                    const row = document.createElement("div");
+                    const b = document.createElement("strong");
+                    b.textContent = l + ": ";
+                    row.appendChild(b);
+                    row.appendChild(document.createTextNode(v));
+                    box.appendChild(row);
+                });
+            const ev = buildEvent(data);
+            document.getElementById("add-google").href = ev.google;
+            document.getElementById("add-ics").onclick = () => downloadIcs(ev);
+            document.getElementById("add-buttons").hidden = false;
+        }
+    </script>
+</body>
+</html>

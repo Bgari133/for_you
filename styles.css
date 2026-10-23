@@ -1,0 +1,158 @@
+:root {
+    --pink: #ff4d79;
+    --pink-dark: #d92f5e;
+    --ink: #4a1d2e;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    padding: 20px;
+    font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(135deg, #ffd6e0, #ffeef3 45%, #ffcfdc);
+    background-size: 200% 200%;
+    animation: bgShift 14s ease-in-out infinite;
+    overflow-x: hidden;
+}
+
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Плавающие сердечки на фоне */
+.heart {
+    position: fixed;
+    bottom: -50px;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    to { transform: translateY(-115vh) rotate(25deg); }
+}
+
+/* Карточка */
+.card {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    width: 100%;
+    max-width: 460px;
+    padding: 30px 26px 34px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(217, 47, 94, 0.18);
+    animation: popIn 0.7s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.94); }
+    to { opacity: 1; transform: none; }
+}
+
+.card.shake { animation: shake 0.35s ease; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-7px) rotate(-0.6deg); }
+    75% { transform: translateX(7px) rotate(0.6deg); }
+}
+
+.gif_container img {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto 22px;
+    border-radius: 22px;
+    box-shadow: 0 8px 22px rgba(217, 47, 94, 0.22);
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-family: 'Pacifico', 'Segoe Script', cursive;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 7vw, 2.5rem);
+    line-height: 1.3;
+    color: var(--pink-dark);
+}
+
+.sub {
+    margin: 0 0 24px;
+    font-size: 1.05rem;
+    opacity: 0.8;
+}
+
+/* Кнопки */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+button {
+    font-family: inherit;
+    font-weight: 800;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    max-width: 100%;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, font-size 0.25s ease;
+}
+
+button:active { transform: scale(0.95); }
+
+.yes-button {
+    font-size: 1.3rem;
+    padding: 0.5em 1.2em;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b94, #ff3d6e);
+    box-shadow: 0 8px 20px rgba(255, 61, 110, 0.4);
+    animation: pulse 1.8s ease-in-out infinite;
+}
+
+.yes-button:hover { transform: scale(1.06); }
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 20px rgba(255, 61, 110, 0.4); }
+    50% { box-shadow: 0 8px 30px rgba(255, 61, 110, 0.7); }
+}
+
+.no-button {
+    font-size: 1rem;
+    padding: 0.7em 1.4em;
+    color: #8a5a6a;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    line-height: 1.3;
+}
+
+[hidden] { display: none !important; }
+
+.big-emoji { font-size: 4.5rem; line-height: 1; margin-bottom: 14px; }
+
+.sad { animation: wobble 1.4s ease-in-out infinite; }
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg) translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}

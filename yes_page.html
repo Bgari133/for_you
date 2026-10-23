@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ура!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="yes_style.css?v=7">
+</head>
+<body class="yes-page" data-confetti>
+    <div class="card">
+        <div class="gif_container" id="yes-gif">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" alt="Ура!">
+        </div>
+        <h1 id="yes-title">Ура! Ты сказала «Да»! ❤️</h1>
+
+        <form id="plan-form" novalidate>
+            <p class="sub" id="yes-sub">Я так рад! Давай спланируем наше свидание 👇</p>
+
+            <div class="field">
+                <label for="date">Когда? 📅</label>
+                <div class="row">
+                    <input type="date" id="date" name="date" required>
+                    <input type="time" id="time" name="time" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="place">Где встретимся? 📍</label>
+                <input type="text" id="place" name="place" maxlength="120" placeholder="Например: у входа в парк" required>
+            </div>
+
+            <div class="field">
+                <span class="field-title">Куда хочешь пойти? ✨</span>
+                <div class="chips" id="activity-chips"></div>
+                <div class="subpanel" id="subpanel" hidden></div>
+            </div>
+
+            <div class="field">
+                <label for="note">Пожелания (необязательно) 💌</label>
+                <textarea id="note" name="note" maxlength="300" placeholder="Всё, что хочешь добавить"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Отправить 💌</button>
+            <p class="error" id="plan-error" role="alert"></p>
+        </form>
+
+        <div id="plan-done" class="done" hidden>
+            <p class="sub">Не могу дождаться нашей встречи! ❤️<br>Всё получил, скоро напишу тебе.</p>
+            <div class="summary" id="plan-summary"></div>
+            <div class="cal-buttons">
+                <a class="cal-btn" id="cal-google" target="_blank" rel="noopener">📅 Добавить в Google Календарь</a>
+                <button class="cal-btn" id="cal-ics" type="button">⬇️ Apple / Outlook (.ics)</button>
+            </div>
+        </div>
+    </div>
+    <script src="hearts.js?v=7"></script>
+    <script src="calendar.js?v=7"></script>
+    <script src="script.js?v=7"></script>
+</body>
+</html>
