@@ -4,7 +4,7 @@ const WEB3FORMS_KEY = "13951c6e-52c5-49af-b4ba-16152db0ab44";
 
 // ---------- Отправка письма тебе ----------
 function sendToMe(subject, message) {
-    if (!WEB3FORMS_KEY || WEB3FORMS_KEY === "ТВОЙ_КЛЮЧ") {
+    if (!WEB3FORMS_KEY || WEB3FORMS_KEY === "13951c6e-52c5-49af-b4ba-16152db0ab44") {
         console.warn("Ключ Web3Forms не вставлен: письмо не отправлено.");
         return Promise.resolve(true);
     }
